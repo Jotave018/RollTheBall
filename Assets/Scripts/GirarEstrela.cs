@@ -3,19 +3,19 @@ using UnityEngine;
 public class Estrela : MonoBehaviour
 {
     private Animator animator;
+    public AudioSource Sounds;
+    public AudioClip popSound;
 
     void Update()
     {
         if (gameObject.activeInHierarchy)
         {
-            animator.SetBool("Ativa", true);
+            //animator.SetBool("Ativa", true);
         }
     }
-        private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter()
     {
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
+        Sounds.PlayOneShot(popSound);
+        //Debug.Log("Tocoum um PopSound");
     }
 }
