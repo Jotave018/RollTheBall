@@ -1,5 +1,7 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerMovement : MonoBehaviour
@@ -32,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
             winTextObject.SetActive(true);
             Debug.Log("Jogador Ganhou a fase");
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            //Task.Delay(15000);
+            SceneManager.LoadScene("RollTheBall");
         }
     }
     void FixedUpdate()
@@ -58,6 +62,7 @@ private void OnCollisionEnter(Collision collision)
        // Update the winText to display "You Lose!"
        winTextObject.gameObject.SetActive(true);
        winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+       SceneManager.LoadScene("RollTheBall");
    }
 }
 }
