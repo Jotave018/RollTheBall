@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private float movementX;
     private float movementY;
-    private float movementZ;
+    public float speed = 0;
+//    private float movementZ;
 
 
     void Start()
@@ -18,15 +19,15 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
 
-        movementX= MovementVector.x;
-        movementY= MovementVector.y;
-        movementZ= MovementVector.z;
+        movementX = movementVector.x;
+        movementY = movementVector.y;
+        //movementZ = movementVector.z;
 
     }
 
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        rb.AddForce(movement);
+        rb.AddForce(movement * speed);
     }
 }
